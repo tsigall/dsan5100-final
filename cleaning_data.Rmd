@@ -1,0 +1,251 @@
+---
+title: "R Notebook"
+output: html_notebook
+editor_options: 
+  chunk_output_type: inline
+---
+
+```{r setup, include = FALSE}
+library(tidyverse)
+```
+
+# Payroll Table
+
+```{r}
+# payroll table
+payroll <- read_csv("data/payroll.csv") %>% 
+  rename(team = `team name`,
+         payroll = `team payroll`)
+
+payroll <- payroll %>% 
+  group_by(year) %>% 
+  mutate(z_payroll = (payroll - mean(payroll)) / sd(payroll))
+
+# from https://www.thebaseballcube.com/page.asp?PT=payroll_year&ID=2022
+```
+
+## Add Playoffs
+
+```{r}
+playoffs <- data.frame("ari" = c(0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0),
+                       "atl" = c(1, 1, 1, 1, 1, 0, 0, 0, 0, 1, 1, 0, 1, 0, 0, 0, 0, 1, 1, 1),
+                       "bal" = c(0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+                       "bos" = c(0, 1, 0, 0, 1, 1, 1, 0, 0, 1, 0, 0, 0, 1, 1, 1, 0, 1, 1, 1),
+                       "chc" = c(0, 0, 1, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 1),
+                       "chw" = c(0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0),
+                       "cin" = c(0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0),
+                       "cle" = c(1, 0, 1, 0, 1, 1, 1, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0),
+                       "col" = c(0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0),
+                       "det" = c(0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 1, 0, 0, 0),
+                       "hou" = c(1, 1, 1, 1, 1, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0),
+                       "kcc" = c(0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+                       "laa" = c(0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 1, 1, 0, 1, 1, 0),
+                       "lad" = c(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 1, 1, 0, 1, 0, 1, 0),
+                       "mia" = c(0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1),
+                       "mil" = c(0, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0),
+                       "min" = c(0, 0, 1, 1, 0, 1, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 1, 0, 1, 1),
+                       "nym" = c(1, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0),
+                       "nyy" = c(1, 1, 1, 1, 1, 1, 0, 1, 0, 0, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1),
+                       "oak" = c(0, 0, 1, 1, 1, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 1, 0, 0, 1),
+                       "phl" = c(1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0),
+                       "pit" = c(0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+                       "sdp" = c(1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0),
+                       "sfg" = c(0, 1, 0, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1),
+                       "sea" = c(1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+                       "stl" = c(1, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 1, 0, 1, 0, 0, 1, 1, 1, 0),
+                       "tbr" = c(1, 1, 1, 1, 0, 0, 0, 0, 0, 1, 0, 1, 1, 0, 1, 0, 0, 0, 0, 0),
+                       "tex" = c(0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0),
+                       "tor" = c(1, 0, 1, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+                       "was" = c(0, 0, 0, 1, 0, 1, 1, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0))
+
+teams <- payroll[1:30, 1] %>% 
+  arrange(team)
+
+
+colnames(playoffs) <- teams$team
+playoffs$year <- seq(2022, 2003, by = -1)
+
+playoffs <- pivot_longer(playoffs, cols = -year, names_to = "team", values_to = "playoffs")
+payroll <- left_join(payroll, playoffs, by = c("team", "year"))
+
+# playoff data from baseball reference
+```
+
+# City Names and Teams
+
+```{r}
+# cities and teams dictionary
+
+cities <- c("Phoenix city, Arizona",
+            "Atlanta city, Georgia",
+            "Baltimore city, Maryland",
+            "Boston city, Massachusetts",
+            "Chicago city, Illinois",
+            "Chicago city, Illinois",
+            "Cincinnati city, Ohio",
+            "Cleveland city, Ohio",
+            "Denver city, Colorado",
+            "Detroit city, Michigan",
+            "Houston city, Texas",
+            "Kansas City city, Missouri",
+            "Los Angeles city, California",
+            "Los Angeles city, California",
+            "Miami city, Florida",
+            'Milwaukee city, Wisconsin',
+            "Minneapolis city, Minnesota",
+            "New York city, New York",
+            "New York city, New York",
+            "Oakland city, California",
+            "Philadelphia city, Pennsylvania",
+            "Pittsburgh city, Pennsylvania",
+            "San Diego city, California",
+            "San Francisco city, California",
+            "Seattle city, Washington",
+            "St. Louis city, Missouri",
+            "Tampa city, Florida",
+            "Dallas city, Texas",
+            "Toronto",
+            "Washington city, District of Columbia")
+teams <- teams %>% 
+  arrange(team) %>% 
+  mutate(cities = cities)
+```
+
+# Population Tables
+
+```{r}
+# population tables
+pop2020 <- read_csv("data/pop2020.csv")
+pop2010 <- read_csv("data/pop2010.csv")
+pop2000 <- read_csv("data/pop2000.csv")
+
+pop2020 <- pop2020[,-1]
+colnames(pop2020) <- pop2020[1,]
+pop2020 <- pop2020[-1,]
+
+pop2010 <- pop2010[,-1]
+colnames(pop2010) <- pop2010[1,]
+pop2010 <- pop2010[-1,]
+
+pop2000 <- pop2000 %>% 
+  filter(PLACE != 0 & COUNTY == 0) %>% 
+  unite(City, NAME, STNAME, sep = ", ") %>%
+  arrange(desc(POPESTIMATE2000))
+
+pop2000 <- pop2000[,-c(1, 2, 3, 4, 5, 7, 18, 19)]
+colnames(pop2000) <- c("City", 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009)
+
+pop <- pop2000 %>% 
+  inner_join(pop2010, by = "City") %>% 
+  inner_join(pop2020, by = "City")
+
+
+
+rm(pop2000, pop2010, pop2020)
+
+pop <- pop %>% 
+  filter(City %in% cities)
+
+pop <- pop %>% 
+  pivot_longer(cols = -City, names_to = "Year", values_to = "Population")
+
+toronto <- read_csv("data/toronto.csv")
+
+pop <- rbind(pop, toronto) %>% 
+  arrange(City)
+
+pop <- pop %>% 
+  mutate(Year = as.numeric(Year))
+
+rm(toronto)
+
+# from us census bureau
+# toronto population from https://population.un.org/wpp/
+```
+
+```{r}
+# filter out before 2003 (start of current CBT system)
+pop <- pop %>% 
+  filter(Year > 2002)
+
+payroll <- payroll %>% 
+  filter(year > 2002)
+```
+
+# CBT
+
+```{r}
+year <- seq(2003, 2022, by = 1)
+cbt <- c(117000000,
+         120500000,
+         128000000,
+         136500000,
+         148000000,
+         155000000,
+         162000000,
+         170000000,
+         178000000,
+         178000000,
+         178000000,
+         189000000,
+         189000000,
+         189000000,
+         195000000,
+         197000000,
+         206000000,
+         208000000,
+         210000000,
+         230000000)
+
+cbt <- data.frame(year, cbt)
+
+```
+
+## Add to Payroll Table
+
+```{r}
+payroll <- left_join(payroll, cbt, by = "year")
+
+payroll <- payroll %>% 
+  mutate(above_cbt = if_else(payroll > cbt, 1, 0))
+```
+
+# Division Tables
+
+```{r}
+al_east <- filter(payroll, team %in% c("Baltimore Orioles",
+                                       "Boston Red Sox",
+                                       "New York Yankees",
+                                       "Tampa Bay Rays",
+                                       "Toronto Blue Jays"))
+
+al_central <- filter(payroll, team %in% c("Chicago White Sox",
+                                       "Cleveland Guardians",
+                                       "Detroit Tigers",
+                                       "Kansas City Royals",
+                                       "Minnesota Twins"))
+
+al_west <- filter(payroll, team %in% c("Houston Astros",
+                                       "Los Angeles Angels",
+                                       "Oakland Athletics",
+                                       "Seattle Mariners",
+                                       "Texas Rangers"))
+
+nl_east <- filter(payroll, team %in% c("Atlanta Braves",
+                                       "Miami Marlins",
+                                       "New York Mets",
+                                       "Philadelphia Phillies",
+                                       "Washington Nationals"))
+
+nl_central <- filter(payroll, team %in% c("Chicago Cubs",
+                                       "Cincinnati Reds",
+                                       "Milwaukee Brewers",
+                                       "Pittsburgh Pirates",
+                                       "St. Louis Cardinals"))
+
+nl_west <- filter(payroll, team %in% c("Arizona Diamondbacks",
+                                       "Colorado Rockies",
+                                       "Los Angeles Dodgers",
+                                       "San Diego Padres",
+                                       "San Francisco Giants"))
+```

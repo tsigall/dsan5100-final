@@ -1,0 +1,17 @@
+---
+title: "Report"
+author: "Thomas Sigall"
+date: "`r Sys.Date()`"
+output: html_document
+editor_options: 
+  chunk_output_type: inline
+---
+
+# Introduction
+
+What is the relationship between team performance and team spending? Do teams that spend more money perform better than teams that do not? Is a salary cap necessary to ensure parity among teams?
+
+# Data
+
+
+

@@ -1,0 +1,191 @@
+---
+title: "R Notebook"
+output: html_notebook
+editor_options: 
+  chunk_output_type: inline
+---
+
+```{r setup, include = FALSE}
+library(ggplot2)
+library(plotly)
+```
+
+# Payroll
+
+```{r payroll_eda}
+# by division
+ggplot(al_east) +
+  geom_line(aes(x = year, y = payroll, color = team), linewidth = 1.2) + 
+  scale_y_continuous(labels= scales::dollar_format(scale = 1e-6)) +
+  scale_color_manual(values = c("Baltimore Orioles" = "orange",
+                                 "Boston Red Sox" = "red",
+                                 "New York Yankees" = "blue",
+                                 "Tampa Bay Rays" = "darkblue",
+                                 "Toronto Blue Jays" = "lightblue"),
+                     name = "Team") +
+  labs(title = "AL East Team Payroll",
+       x = "Year",
+       y = "Payroll (Millions of USD)") +
+  geom_line(data = cbt, aes(x = year, y = cbt), linetype = "dashed", linewidth = 1.2)
+
+ggplot(al_central) +
+  geom_line(aes(x = year, y = payroll, color = team), linewidth = 1.2) + 
+  scale_y_continuous(labels= scales::dollar_format(scale = 1e-6)) +
+  scale_color_manual(values = c("Chicago White Sox" = "black",
+                                 "Cleveland Guardians" = "red",
+                                 "Detroit Tigers" = "darkorange",
+                                 "Kansas City Royals" = "royalblue",
+                                 "Minnesota Twins" = "darkblue"),
+                     name = "Team") +
+  labs(title = "AL Central Team Payroll",
+       x = "Year",
+       y = "Payroll (Millions of USD)") +
+  geom_line(data = cbt, aes(x = year, y = cbt), linetype = "dashed", linewidth = 1.2)
+
+ggplot(al_west) +
+  geom_line(aes(x = year, y = payroll, color = team), linewidth = 1.2) + 
+  scale_y_continuous(labels= scales::dollar_format(scale = 1e-6)) +
+  scale_color_manual(values = c("Houston Astros" = "darkorange",
+                                 "Los Angeles Angels" = "red",
+                                 "Oakland Athletics" = "lightgreen",
+                                 "Seattle Mariners" = "#005C5C",
+                                 "Texas Rangers" = "darkblue"),
+                     name = "Team") +
+  labs(title = "AL West Team Payroll",
+       x = "Year",
+       y = "Payroll (Millions of USD)") +
+  geom_line(data = cbt, aes(x = year, y = cbt), linetype = "dashed", linewidth = 1.2)
+
+ggplot(nl_east) +
+  geom_line(aes(x = year, y = payroll, color = team), linewidth = 1.2) + 
+  scale_y_continuous(labels= scales::dollar_format(scale = 1e-6)) +
+  scale_color_manual(values = c("Atlanta Braves" = "darkblue",
+                                 "Miami Marlins" = "black",
+                                 "New York Mets" = "orange",
+                                 "Philadelphia Phillies" = "red",
+                                 "Washington Nationals" = "blue"),
+                     name = "Team") +
+  labs(title = "NL East Team Payroll",
+       x = "Year",
+       y = "Payroll (Millions of USD)") +
+  geom_line(data = cbt, aes(x = year, y = cbt), linetype = "dashed", linewidth = 1.2)
+
+ggplot(nl_central) +
+  geom_line(aes(x = year, y = payroll, color = team), linewidth = 1.2) + 
+  scale_y_continuous(labels= scales::dollar_format(scale = 1e-6)) +
+  scale_color_manual(values = c("Chicago Cubs" = "blue",
+                                 "Cincinnati Reds" = "red",
+                                 "Milwalkee Brewers" = "yellow",
+                                 "Pittsburgh Pirates" = "black",
+                                 "St. Louis Cardinals" = "darkblue"),
+                     name = "Team") +
+  labs(title = "NL Central Team Payroll",
+       x = "Year",
+       y = "Payroll (Millions of USD)") +
+  geom_line(data = cbt, aes(x = year, y = cbt), linetype = "dashed", linewidth = 1.2)
+
+ggplot(nl_west) +
+  geom_line(aes(x = year, y = payroll, color = team), linewidth = 1.2) + 
+  scale_y_continuous(labels= scales::dollar_format(scale = 1e-6)) +
+  scale_color_manual(values = c("Arizona Diamondbacks" = "darkred",
+                                 "Colorado Rockies" = "purple",
+                                 "Los Angeles Dodgers" = "dodgerblue4",
+                                 "San Diego Padres" = "yellow",
+                                 "San Francisco Giants" = "brown"),
+                     name = "Team") +
+  labs(title = "NL West Team Payroll",
+       x = "Year",
+       y = "Payroll (Millions of USD)") +
+  geom_line(data = cbt, aes(x = year, y = cbt), linetype = "dashed", linewidth = 1.2)
+
+
+```
+
+# Wins
+
+```{r}
+# by division
+ggplot(al_east, aes(x = year, y = wpct, color = team)) +
+  geom_line(linewidth = 1.2) + 
+  scale_color_manual(values = c("Baltimore Orioles" = "orange",
+                                 "Boston Red Sox" = "red",
+                                 "New York Yankees" = "blue",
+                                 "Tampa Bay Rays" = "darkblue",
+                                 "Toronto Blue Jays" = "lightblue"),
+                     name = "Team") +
+  labs(title = "AL East Team Win Percentage",
+       x = "Year",
+       y = "Win Percentage ")
+
+ggplot(al_central, aes(x = year, y = wpct, color = team)) +
+  geom_line(linewidth = 1.2) + 
+  scale_color_manual(values = c("Chicago White Sox" = "black",
+                                 "Cleveland Guardians" = "red",
+                                 "Detroit Tigers" = "darkorange",
+                                 "Kansas City Royals" = "royalblue",
+                                 "Minnesota Twins" = "darkblue"),
+                     name = "Team") +
+  labs(title = "AL Central Team Win Percentage",
+       x = "Year",
+       y = "Win Percentage ")
+
+ggplot(al_west, aes(x = year, y = wpct, color = team)) +
+  geom_line(linewidth = 1.2) + 
+  scale_color_manual(values = c("Houston Astros" = "darkorange",
+                                 "Los Angeles Angels" = "red",
+                                 "Oakland Athletics" = "lightgreen",
+                                 "Seattle Mariners" = "#005C5C",
+                                 "Texas Rangers" = "darkblue"),
+                     name = "Team") +
+  labs(title = "AL West Team Win Percentage",
+       x = "Year",
+       y = "Win Percentage ")
+
+ggplot(nl_east, aes(x = year, y = wpct, color = team)) +
+  geom_line(linewidth = 1.2) + 
+  scale_color_manual(values = c("Atlanta Braves" = "darkblue",
+                                 "Miami Marlins" = "black",
+                                 "New York Mets" = "orange",
+                                 "Philadelphia Phillies" = "darkred",
+                                 "Washington Nationals" = "blue"),
+                     name = "Team") +
+  labs(title = "NL East Team Win Percentage",
+       x = "Year",
+       y = "Win Percentage ")
+
+ggplot(nl_central, aes(x = year, y = wpct, color = team)) +
+  geom_line(linewidth = 1.2) + 
+  scale_color_manual(values = c("Chicago Cubs" = "blue",
+                                 "Cincinnati Reds" = "red",
+                                 "Milwalkee Brewers" = "yellow",
+                                 "Pittsburgh Pirates" = "black",
+                                 "St. Louis Cardinals" = "darkblue"),
+                     name = "Team") +
+  labs(title = "NL Central Team Win Percentage",
+       x = "Year",
+       y = "Win Percentage ")
+
+ggplot(nl_west, aes(x = year, y = wpct, color = team)) +
+  geom_line(linewidth = 1.2) + 
+  scale_color_manual(values = c("Arizona Diamondbacks" = "darkred",
+                                 "Colorado Rockies" = "purple",
+                                 "Los Angeles Dodgers" = "dodgerblue4",
+                                 "San Diego Padres" = "yellow",
+                                 "San Francisco Giants" = "brown"),
+                     name = "Team") +
+  labs(title = "NL West Team Win Percentage",
+       x = "Year",
+       y = "Win Percentage ")
+
+
+```
+
+# Population
+
+```{r}
+ggplot(data = filter(pop, Population > 1000000),
+       aes(x = Year, y = Population, color = City)) +
+  geom_line() +
+  scale_y_continuous(labels = scales::label_number(scale = 1e-6, suffix = "M")) +
+  labs(title = "Population")
+```

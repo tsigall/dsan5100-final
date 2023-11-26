@@ -1,0 +1,52 @@
+---
+title: "R Notebook"
+output: html_notebook
+editor_options: 
+  chunk_output_type: inline
+---
+
+# Hypothesis Testing
+
+## Chi-Square Test
+
+Is there a relationship between playoff appearances and being above the CBT threshold? A chi-square test would be appropriate for this scenario. The null hypothesis is that making the playoffs and being above the CBT threshold are independent. The alternative hypothesis is that those two variables are not independent (there is some relationship between the two).
+
+```{r}
+chisq.test(payroll$playoffs, payroll$above_cbt)
+```
+
+The p-value for this test is essentially 0. We can reject the null hypothesis and conclude that playoff appearances and being above the CBT threshold are not independent, there is some relationship between the two. Conventional wisdom would say that this relationship is a postive one in the sense that being above the threshold makes a team more likely to make the playoffs. Now it would be useful to confirm that intuition and if it is true, then quantify just how much of an advantage being above the threshold gives to a team.
+
+## Independent t-test
+
+Is the average winning percentage for teams below the CBT threshold smaller than the average winning percentage for teams above the CBT threshold?
+
+Let $\mu_a$ = mean winning percentage for teams *above* the CBT threshold.
+
+Let $\mu_b$ = mean winning percentage for teams above *below* CBT threshold.
+
+$H_0 = \mu_a - \mu_b \le 0$
+
+$H_a = \mu_a - \mu_b > 0$
+
+```{r}
+above <- payroll[payroll$above_cbt == 1, "wpct"]
+below <- payroll[payroll$above_cbt == 0, "wpct"]
+t.test(above, below,
+       alternative = "greater",
+       conf.level = 0.95)
+```
+
+The p-value from this t-test is essentially 0. We have enough evidence to reject the null hypothesis, teams with a payroll above the CBT threshold have a higher winning percentage than teams below the CBT threshold. We are 95% confident that the true difference of means between the winning percentage of the two populations is greater than 0.0575. This works out to a difference of 9.3 wins over an entire 162 game season, meaning we are 95% confident that teams who exceed the CBT threshold win at least 9 more games than teams that do not.
+
+## Paired t-test
+
+It may be useful to look at individual teams and see if going into the CBT threshold makes a difference in winning percentage. Comparing winning percentage before and after going over that threshold is a scenario appropriate for a paired t-test.
+
+## Linear Regression
+
+Is there a linear relationship between wins and payroll?
+
+# Population
+
+Is there a relationship between population and winning percentage? What about population and payroll? Is this a problem that is difficult to address because teams in bigger cities are better, not teams with wealthier owners?
