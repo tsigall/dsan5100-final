@@ -75,7 +75,7 @@ p5 <- ggplot(nl_central) +
   scale_y_continuous(labels= scales::dollar_format(scale = 1e-6)) +
   scale_color_manual(values = c("Chicago Cubs" = "blue",
                                  "Cincinnati Reds" = "red",
-                                 "Milwalkee Brewers" = "yellow",
+                                 "Milwaukee Brewers" = "yellow",
                                  "Pittsburgh Pirates" = "black",
                                  "St. Louis Cardinals" = "darkblue"),
                      name = "Team") +
@@ -227,6 +227,9 @@ large_markets <- teams %>%
          population = Population)
 
 large_markets
+
+kable(large_markets) %>% 
+  kable_styling(full_width = FALSE)
 ```
 
 Add large or small market label to payroll table
