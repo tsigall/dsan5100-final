@@ -101,6 +101,17 @@ ggplot(nl_west) +
 
 ```
 
+## Years above CBT
+
+```{r}
+payroll %>% 
+  group_by(team) %>% 
+  summarize(above_cbt = sum(above_cbt)) %>% 
+  arrange(desc(above_cbt)) %>% 
+  filter(above_cbt > 0)
+  ungroup()
+```
+
 # Wins
 
 ```{r}
@@ -188,4 +199,39 @@ ggplot(data = filter(pop, Population > 1000000),
   geom_line() +
   scale_y_continuous(labels = scales::label_number(scale = 1e-6, suffix = "M")) +
   labs(title = "Population")
+```
+
+```{r}
+pop_22 <- filter(pop, Year == 2022)$Population
+
+summary(pop_22)
+boxplot(pop_22, main = "Boxplot of 2022 Population")
+```
+
+## Large and Small Market
+
+The 7 large markets and their population in 2022
+
+```{r}
+large_markets <- pop %>% 
+  filter(Population > 1474210,
+         Year == 2022) %>% 
+  select(-Year) %>% 
+  arrange(desc(Population))
+
+large_markets <- teams %>% 
+  filter(cities %in% large_markets$City) %>% 
+  left_join(large_markets, by = c("cities" = "City")) %>% 
+  arrange(desc(Population)) %>% 
+  rename(city = cities,
+         population = Population)
+
+large_markets
+```
+
+Add large or small market label to payroll table
+
+```{r}
+payroll <- payroll %>% 
+  mutate(large_market = if_else(team %in% large_markets$team, 1, 0))
 ```
