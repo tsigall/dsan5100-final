@@ -101,5 +101,3 @@ quantile(means.boot, c(0.025, 0.975)) * 162
 ```
 
 We are 95% confident that the true difference in means between winning percentage for teams above and below the CBT threshold is between 11.3 and 13.3 wins each season. This is larger than the previously determined value of 9 wins, further supporting our hypothesis that teams that surpass the CBT threshold win more games.
-
-# Conclusions

@@ -14,7 +14,7 @@ library(plotly)
 
 ```{r payroll_eda}
 # by division
-ggplot(al_east) +
+p1 <- ggplot(al_east) +
   geom_line(aes(x = year, y = payroll, color = team), linewidth = 1.2) + 
   scale_y_continuous(labels= scales::dollar_format(scale = 1e-6)) +
   scale_color_manual(values = c("Baltimore Orioles" = "orange",
@@ -28,7 +28,7 @@ ggplot(al_east) +
        y = "Payroll (Millions of USD)") +
   geom_line(data = cbt, aes(x = year, y = cbt), linetype = "dashed", linewidth = 1.2)
 
-ggplot(al_central) +
+p2 <- ggplot(al_central) +
   geom_line(aes(x = year, y = payroll, color = team), linewidth = 1.2) + 
   scale_y_continuous(labels= scales::dollar_format(scale = 1e-6)) +
   scale_color_manual(values = c("Chicago White Sox" = "black",
@@ -42,7 +42,7 @@ ggplot(al_central) +
        y = "Payroll (Millions of USD)") +
   geom_line(data = cbt, aes(x = year, y = cbt), linetype = "dashed", linewidth = 1.2)
 
-ggplot(al_west) +
+p3 <- ggplot(al_west) +
   geom_line(aes(x = year, y = payroll, color = team), linewidth = 1.2) + 
   scale_y_continuous(labels= scales::dollar_format(scale = 1e-6)) +
   scale_color_manual(values = c("Houston Astros" = "darkorange",
@@ -56,7 +56,7 @@ ggplot(al_west) +
        y = "Payroll (Millions of USD)") +
   geom_line(data = cbt, aes(x = year, y = cbt), linetype = "dashed", linewidth = 1.2)
 
-ggplot(nl_east) +
+p4 <- ggplot(nl_east) +
   geom_line(aes(x = year, y = payroll, color = team), linewidth = 1.2) + 
   scale_y_continuous(labels= scales::dollar_format(scale = 1e-6)) +
   scale_color_manual(values = c("Atlanta Braves" = "darkblue",
@@ -70,7 +70,7 @@ ggplot(nl_east) +
        y = "Payroll (Millions of USD)") +
   geom_line(data = cbt, aes(x = year, y = cbt), linetype = "dashed", linewidth = 1.2)
 
-ggplot(nl_central) +
+p5 <- ggplot(nl_central) +
   geom_line(aes(x = year, y = payroll, color = team), linewidth = 1.2) + 
   scale_y_continuous(labels= scales::dollar_format(scale = 1e-6)) +
   scale_color_manual(values = c("Chicago Cubs" = "blue",
@@ -84,7 +84,7 @@ ggplot(nl_central) +
        y = "Payroll (Millions of USD)") +
   geom_line(data = cbt, aes(x = year, y = cbt), linetype = "dashed", linewidth = 1.2)
 
-ggplot(nl_west) +
+p6 <- ggplot(nl_west) +
   geom_line(aes(x = year, y = payroll, color = team), linewidth = 1.2) + 
   scale_y_continuous(labels= scales::dollar_format(scale = 1e-6)) +
   scale_color_manual(values = c("Arizona Diamondbacks" = "darkred",
@@ -116,7 +116,7 @@ payroll %>%
 
 ```{r}
 # by division
-ggplot(al_east, aes(x = year, y = wpct, color = team)) +
+p7 <- ggplot(al_east, aes(x = year, y = wpct, color = team)) +
   geom_line(linewidth = 1.2) + 
   scale_color_manual(values = c("Baltimore Orioles" = "orange",
                                  "Boston Red Sox" = "red",
@@ -128,7 +128,7 @@ ggplot(al_east, aes(x = year, y = wpct, color = team)) +
        x = "Year",
        y = "Win Percentage ")
 
-ggplot(al_central, aes(x = year, y = wpct, color = team)) +
+p8 <- ggplot(al_central, aes(x = year, y = wpct, color = team)) +
   geom_line(linewidth = 1.2) + 
   scale_color_manual(values = c("Chicago White Sox" = "black",
                                  "Cleveland Guardians" = "red",
@@ -140,7 +140,7 @@ ggplot(al_central, aes(x = year, y = wpct, color = team)) +
        x = "Year",
        y = "Win Percentage ")
 
-ggplot(al_west, aes(x = year, y = wpct, color = team)) +
+p9<- ggplot(al_west, aes(x = year, y = wpct, color = team)) +
   geom_line(linewidth = 1.2) + 
   scale_color_manual(values = c("Houston Astros" = "darkorange",
                                  "Los Angeles Angels" = "red",
@@ -152,7 +152,7 @@ ggplot(al_west, aes(x = year, y = wpct, color = team)) +
        x = "Year",
        y = "Win Percentage ")
 
-ggplot(nl_east, aes(x = year, y = wpct, color = team)) +
+p10 <- ggplot(nl_east, aes(x = year, y = wpct, color = team)) +
   geom_line(linewidth = 1.2) + 
   scale_color_manual(values = c("Atlanta Braves" = "darkblue",
                                  "Miami Marlins" = "black",
@@ -164,11 +164,11 @@ ggplot(nl_east, aes(x = year, y = wpct, color = team)) +
        x = "Year",
        y = "Win Percentage ")
 
-ggplot(nl_central, aes(x = year, y = wpct, color = team)) +
+p11 <- ggplot(nl_central, aes(x = year, y = wpct, color = team)) +
   geom_line(linewidth = 1.2) + 
   scale_color_manual(values = c("Chicago Cubs" = "blue",
                                  "Cincinnati Reds" = "red",
-                                 "Milwalkee Brewers" = "yellow",
+                                 "Milwaukee Brewers" = "yellow",
                                  "Pittsburgh Pirates" = "black",
                                  "St. Louis Cardinals" = "darkblue"),
                      name = "Team") +
@@ -176,7 +176,7 @@ ggplot(nl_central, aes(x = year, y = wpct, color = team)) +
        x = "Year",
        y = "Win Percentage ")
 
-ggplot(nl_west, aes(x = year, y = wpct, color = team)) +
+p12 <- ggplot(nl_west, aes(x = year, y = wpct, color = team)) +
   geom_line(linewidth = 1.2) + 
   scale_color_manual(values = c("Arizona Diamondbacks" = "darkred",
                                  "Colorado Rockies" = "purple",
@@ -234,4 +234,13 @@ Add large or small market label to payroll table
 ```{r}
 payroll <- payroll %>% 
   mutate(large_market = if_else(team %in% large_markets$team, 1, 0))
+```
+
+# Save Data
+
+```{r}
+save(cbt, payroll, pop, teams, 
+     p1, p2, p3, p4, p5, p6, 
+     p7, p8, p9, p10, p11, p12,
+     file = "data.Rdata")
 ```
