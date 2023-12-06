@@ -1758,14 +1758,8 @@ display: none;
 <h1>Payroll Table</h1>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBwYXlyb2xsIHRhYmxlXG5wYXlyb2xsIDwtIHJlYWRfY3N2KFwiZGF0YS9wYXlyb2xsLmNzdlwiKSAlPiUgXG4gIHJlbmFtZSh0ZWFtID0gYHRlYW0gbmFtZWAsXG4gICAgICAgICBwYXlyb2xsID0gYHRlYW0gcGF5cm9sbGApXG5gYGAifQ== -->
-<pre class="r"><code># payroll table
-payroll &lt;- read_csv(&quot;data/payroll.csv&quot;) %&gt;% 
-  rename(team = `team name`,
-         payroll = `team payroll`)</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiUm93czogNjkwIENvbHVtbnM6IDTilIDilIAgQ29sdW1uIHNwZWNpZmljYXRpb24g4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSAXG5EZWxpbWl0ZXI6IFwiLFwiXG5jaHIgKDEpOiB0ZWFtIG5hbWVcbmRibCAoMik6IHdwY3QsIHllYXJcbm51bSAoMSk6IHRlYW0gcGF5cm9sbFxu4oS5IFVzZSBgc3BlYygpYCB0byByZXRyaWV2ZSB0aGUgZnVsbCBjb2x1bW4gc3BlY2lmaWNhdGlvbiBmb3IgdGhpcyBkYXRhLlxu4oS5IFNwZWNpZnkgdGhlIGNvbHVtbiB0eXBlcyBvciBzZXQgYHNob3dfY29sX3R5cGVzID0gRkFMU0VgIHRvIHF1aWV0IHRoaXMgbWVzc2FnZS5cbiJ9 -->
-<pre><code>Rows: 690 Columns: 4── Column specification ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+<!-- rnb-output-begin eyJkYXRhIjoiUm93czogNjkwIENvbHVtbnM6IDTilIDilIAgQ29sdW1uIHNwZWNpZmljYXRpb24g4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSAXG5EZWxpbWl0ZXI6IFwiLFwiXG5jaHIgKDEpOiB0ZWFtIG5hbWVcbmRibCAoMik6IHdwY3QsIHllYXJcbm51bSAoMSk6IHRlYW0gcGF5cm9sbFxu4oS5IFVzZSBgc3BlYygpYCB0byByZXRyaWV2ZSB0aGUgZnVsbCBjb2x1bW4gc3BlY2lmaWNhdGlvbiBmb3IgdGhpcyBkYXRhLlxu4oS5IFNwZWNpZnkgdGhlIGNvbHVtbiB0eXBlcyBvciBzZXQgYHNob3dfY29sX3R5cGVzID0gRkFMU0VgIHRvIHF1aWV0IHRoaXMgbWVzc2FnZS5cbiJ9 -->
+<pre><code>Rows: 690 Columns: 4── Column specification ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 Delimiter: &quot;,&quot;
 chr (1): team name
 dbl (2): wpct, year
@@ -1773,63 +1767,12 @@ num (1): team payroll
 ℹ Use `spec()` to retrieve the full column specification for this data.
 ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
 <!-- rnb-output-end -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxucGF5cm9sbCA8LSBwYXlyb2xsICU+JSBcbiAgZ3JvdXBfYnkoeWVhcikgJT4lIFxuICBtdXRhdGUoel9wYXlyb2xsID0gKHBheXJvbGwgLSBtZWFuKHBheXJvbGwpKSAvIHNkKHBheXJvbGwpKVxuXG4jIGZyb20gaHR0cHM6Ly93d3cudGhlYmFzZWJhbGxjdWJlLmNvbS9wYWdlLmFzcD9QVD1wYXlyb2xsX3llYXImSUQ9MjAyMlxuYGBgIn0= -->
-<pre class="r"><code>payroll &lt;- payroll %&gt;% 
-  group_by(year) %&gt;% 
-  mutate(z_payroll = (payroll - mean(payroll)) / sd(payroll))
-
-# from https://www.thebaseballcube.com/page.asp?PT=payroll_year&amp;ID=2022</code></pre>
-<!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <div id="add-playoffs" class="section level2">
 <h2>Add Playoffs</h2>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxucGxheW9mZnMgPC0gZGF0YS5mcmFtZShcImFyaVwiID0gYygwLCAwLCAwLCAwLCAwLCAxLCAwLCAwLCAwLCAwLCAwLCAxLCAwLCAwLCAwLCAxLCAwLCAwLCAwLCAwKSxcbiAgICAgICAgICAgICAgICAgICAgICAgXCJhdGxcIiA9IGMoMSwgMSwgMSwgMSwgMSwgMCwgMCwgMCwgMCwgMSwgMSwgMCwgMSwgMCwgMCwgMCwgMCwgMSwgMSwgMSksXG4gICAgICAgICAgICAgICAgICAgICAgIFwiYmFsXCIgPSBjKDAsIDAsIDAsIDAsIDAsIDAsIDEsIDAsIDEsIDAsIDEsIDAsIDAsIDAsIDAsIDAsIDAsIDAsIDAsIDApLFxuICAgICAgICAgICAgICAgICAgICAgICBcImJvc1wiID0gYygwLCAxLCAwLCAwLCAxLCAxLCAxLCAwLCAwLCAxLCAwLCAwLCAwLCAxLCAxLCAxLCAwLCAxLCAxLCAxKSxcbiAgICAgICAgICAgICAgICAgICAgICAgXCJjaGNcIiA9IGMoMCwgMCwgMSwgMCwgMSwgMSwgMSwgMSwgMCwgMCwgMCwgMCwgMCwgMCwgMSwgMSwgMCwgMCwgMCwgMSksXG4gICAgICAgICAgICAgICAgICAgICAgIFwiY2h3XCIgPSBjKDAsIDEsIDEsIDAsIDAsIDAsIDAsIDAsIDAsIDAsIDAsIDAsIDAsIDAsIDEsIDAsIDAsIDEsIDAsIDApLFxuICAgICAgICAgICAgICAgICAgICAgICBcImNpblwiID0gYygwLCAwLCAxLCAwLCAwLCAwLCAwLCAwLCAwLCAxLCAxLCAwLCAxLCAwLCAwLCAwLCAwLCAwLCAwLCAwKSxcbiAgICAgICAgICAgICAgICAgICAgICAgXCJjbGVcIiA9IGMoMSwgMCwgMSwgMCwgMSwgMSwgMSwgMCwgMCwgMSwgMCwgMCwgMCwgMCwgMCwgMSwgMCwgMCwgMCwgMCksXG4gICAgICAgICAgICAgICAgICAgICAgIFwiY29sXCIgPSBjKDAsIDAsIDAsIDAsIDEsIDEsIDAsIDAsIDAsIDAsIDAsIDAsIDAsIDEsIDAsIDEsIDAsIDAsIDAsIDApLFxuICAgICAgICAgICAgICAgICAgICAgICBcImRldFwiID0gYygwLCAwLCAwLCAwLCAwLCAwLCAwLCAwLCAxLCAxLCAxLCAxLCAwLCAwLCAwLCAwLCAxLCAwLCAwLCAwKSxcbiAgICAgICAgICAgICAgICAgICAgICAgXCJob3VcIiA9IGMoMSwgMSwgMSwgMSwgMSwgMSwgMCwgMSwgMCwgMCwgMCwgMCwgMCwgMCwgMCwgMCwgMCwgMSwgMSwgMCksXG4gICAgICAgICAgICAgICAgICAgICAgIFwia2NjXCIgPSBjKDAsIDAsIDAsIDAsIDAsIDAsIDAsIDEsIDEsIDAsIDAsIDAsIDAsIDAsIDAsIDAsIDAsIDAsIDAsIDApLFxuICAgICAgICAgICAgICAgICAgICAgICBcImxhYVwiID0gYygwLCAwLCAwLCAwLCAwLCAwLCAwLCAwLCAxLCAwLCAwLCAwLCAwLCAxLCAxLCAxLCAwLCAxLCAxLCAwKSxcbiAgICAgICAgICAgICAgICAgICAgICAgXCJsYWRcIiA9IGMoMSwgMSwgMSwgMSwgMSwgMSwgMSwgMSwgMSwgMSwgMCwgMCwgMCwgMSwgMSwgMCwgMSwgMCwgMSwgMCksXG4gICAgICAgICAgICAgICAgICAgICAgIFwibWlhXCIgPSBjKDAsIDAsIDEsIDAsIDAsIDAsIDAsIDAsIDAsIDAsIDAsIDAsIDAsIDAsIDAsIDAsIDAsIDAsIDAsIDEpLFxuICAgICAgICAgICAgICAgICAgICAgICBcIm1pbFwiID0gYygwLCAxLCAxLCAxLCAxLCAwLCAwLCAwLCAwLCAwLCAwLCAxLCAwLCAwLCAxLCAwLCAwLCAwLCAwLCAwKSxcbiAgICAgICAgICAgICAgICAgICAgICAgXCJtaW5cIiA9IGMoMCwgMCwgMSwgMSwgMCwgMSwgMCwgMCwgMCwgMCwgMCwgMCwgMSwgMSwgMCwgMCwgMSwgMCwgMSwgMSksXG4gICAgICAgICAgICAgICAgICAgICAgIFwibnltXCIgPSBjKDEsIDAsIDAsIDAsIDAsIDAsIDEsIDEsIDAsIDAsIDAsIDAsIDAsIDAsIDAsIDAsIDEsIDAsIDAsIDApLFxuICAgICAgICAgICAgICAgICAgICAgICBcIm55eVwiID0gYygxLCAxLCAxLCAxLCAxLCAxLCAwLCAxLCAwLCAwLCAxLCAxLCAxLCAxLCAwLCAxLCAxLCAxLCAxLCAxKSxcbiAgICAgICAgICAgICAgICAgICAgICAgXCJvYWtcIiA9IGMoMCwgMCwgMSwgMSwgMSwgMCwgMCwgMCwgMSwgMSwgMSwgMCwgMCwgMCwgMCwgMCwgMSwgMCwgMCwgMSksXG4gICAgICAgICAgICAgICAgICAgICAgIFwicGhsXCIgPSBjKDEsIDAsIDAsIDAsIDAsIDAsIDAsIDAsIDAsIDAsIDAsIDEsIDEsIDEsIDEsIDEsIDAsIDAsIDAsIDApLFxuICAgICAgICAgICAgICAgICAgICAgICBcInBpdFwiID0gYygwLCAwLCAwLCAwLCAwLCAwLCAwLCAxLCAxLCAxLCAwLCAwLCAwLCAwLCAwLCAwLCAwLCAwLCAwLCAwKSxcbiAgICAgICAgICAgICAgICAgICAgICAgXCJzZHBcIiA9IGMoMSwgMCwgMSwgMCwgMCwgMCwgMCwgMCwgMCwgMCwgMCwgMCwgMCwgMCwgMCwgMCwgMSwgMSwgMCwgMCksXG4gICAgICAgICAgICAgICAgICAgICAgIFwic2ZnXCIgPSBjKDAsIDEsIDAsIDAsIDAsIDEsIDAsIDEsIDAsIDEsIDAsIDEsIDAsIDAsIDAsIDAsIDAsIDAsIDAsIDEpLFxuICAgICAgICAgICAgICAgICAgICAgICBcInNlYVwiID0gYygxLCAwLCAwLCAwLCAwLCAwLCAwLCAwLCAwLCAwLCAwLCAwLCAwLCAwLCAwLCAwLCAwLCAwLCAwLCAwKSxcbiAgICAgICAgICAgICAgICAgICAgICAgXCJzdGxcIiA9IGMoMSwgMSwgMSwgMSwgMCwgMCwgMCwgMSwgMSwgMSwgMSwgMSwgMCwgMSwgMCwgMCwgMSwgMSwgMSwgMCksXG4gICAgICAgICAgICAgICAgICAgICAgIFwidGJyXCIgPSBjKDEsIDEsIDEsIDEsIDAsIDAsIDAsIDAsIDAsIDEsIDAsIDEsIDEsIDAsIDEsIDAsIDAsIDAsIDAsIDApLFxuICAgICAgICAgICAgICAgICAgICAgICBcInRleFwiID0gYygwLCAwLCAwLCAwLCAwLCAwLCAxLCAxLCAwLCAwLCAxLCAxLCAxLCAwLCAwLCAwLCAwLCAwLCAwLCAwKSxcbiAgICAgICAgICAgICAgICAgICAgICAgXCJ0b3JcIiA9IGMoMSwgMCwgMSwgMCwgMCwgMCwgMSwgMSwgMCwgMCwgMCwgMCwgMCwgMCwgMCwgMCwgMCwgMCwgMCwgMCksXG4gICAgICAgICAgICAgICAgICAgICAgIFwid2FzXCIgPSBjKDAsIDAsIDAsIDEsIDAsIDEsIDEsIDAsIDEsIDAsIDEsIDAsIDAsIDAsIDAsIDAsIDAsIDAsIDAsIDApKVxuXG50ZWFtcyA8LSBwYXlyb2xsWzE6MzAsIDFdICU+JSBcbiAgYXJyYW5nZSh0ZWFtKVxuXG5cbmNvbG5hbWVzKHBsYXlvZmZzKSA8LSB0ZWFtcyR0ZWFtXG5wbGF5b2ZmcyR5ZWFyIDwtIHNlcSgyMDIyLCAyMDAzLCBieSA9IC0xKVxuXG5wbGF5b2ZmcyA8LSBwaXZvdF9sb25nZXIocGxheW9mZnMsIGNvbHMgPSAteWVhciwgbmFtZXNfdG8gPSBcInRlYW1cIiwgdmFsdWVzX3RvID0gXCJwbGF5b2Zmc1wiKVxucGF5cm9sbCA8LSBsZWZ0X2pvaW4ocGF5cm9sbCwgcGxheW9mZnMsIGJ5ID0gYyhcInRlYW1cIiwgXCJ5ZWFyXCIpKVxuXG4jIHBsYXlvZmYgZGF0YSBmcm9tIGJhc2ViYWxsIHJlZmVyZW5jZVxuYGBgIn0= -->
-<pre class="r"><code>playoffs &lt;- data.frame(&quot;ari&quot; = c(0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0),
-                       &quot;atl&quot; = c(1, 1, 1, 1, 1, 0, 0, 0, 0, 1, 1, 0, 1, 0, 0, 0, 0, 1, 1, 1),
-                       &quot;bal&quot; = c(0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-                       &quot;bos&quot; = c(0, 1, 0, 0, 1, 1, 1, 0, 0, 1, 0, 0, 0, 1, 1, 1, 0, 1, 1, 1),
-                       &quot;chc&quot; = c(0, 0, 1, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 1),
-                       &quot;chw&quot; = c(0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0),
-                       &quot;cin&quot; = c(0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0),
-                       &quot;cle&quot; = c(1, 0, 1, 0, 1, 1, 1, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0),
-                       &quot;col&quot; = c(0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0),
-                       &quot;det&quot; = c(0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 1, 0, 0, 0),
-                       &quot;hou&quot; = c(1, 1, 1, 1, 1, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0),
-                       &quot;kcc&quot; = c(0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-                       &quot;laa&quot; = c(0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 1, 1, 0, 1, 1, 0),
-                       &quot;lad&quot; = c(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 1, 1, 0, 1, 0, 1, 0),
-                       &quot;mia&quot; = c(0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1),
-                       &quot;mil&quot; = c(0, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0),
-                       &quot;min&quot; = c(0, 0, 1, 1, 0, 1, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 1, 0, 1, 1),
-                       &quot;nym&quot; = c(1, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0),
-                       &quot;nyy&quot; = c(1, 1, 1, 1, 1, 1, 0, 1, 0, 0, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1),
-                       &quot;oak&quot; = c(0, 0, 1, 1, 1, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 1, 0, 0, 1),
-                       &quot;phl&quot; = c(1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0),
-                       &quot;pit&quot; = c(0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-                       &quot;sdp&quot; = c(1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0),
-                       &quot;sfg&quot; = c(0, 1, 0, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1),
-                       &quot;sea&quot; = c(1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-                       &quot;stl&quot; = c(1, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 1, 0, 1, 0, 0, 1, 1, 1, 0),
-                       &quot;tbr&quot; = c(1, 1, 1, 1, 0, 0, 0, 0, 0, 1, 0, 1, 1, 0, 1, 0, 0, 0, 0, 0),
-                       &quot;tex&quot; = c(0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0),
-                       &quot;tor&quot; = c(1, 0, 1, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-                       &quot;was&quot; = c(0, 0, 0, 1, 0, 1, 1, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0))
-
-teams &lt;- payroll[1:30, 1] %&gt;% 
-  arrange(team)
-
-
-colnames(playoffs) &lt;- teams$team
-playoffs$year &lt;- seq(2022, 2003, by = -1)
-
-playoffs &lt;- pivot_longer(playoffs, cols = -year, names_to = &quot;team&quot;, values_to = &quot;playoffs&quot;)
-payroll &lt;- left_join(payroll, playoffs, by = c(&quot;team&quot;, &quot;year&quot;))
-
-# playoff data from baseball reference</code></pre>
-<!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 </div>
@@ -1838,43 +1781,6 @@ payroll &lt;- left_join(payroll, playoffs, by = c(&quot;team&quot;, &quot;year&q
 <h1>City Names and Teams</h1>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBjaXRpZXMgYW5kIHRlYW1zIGRpY3Rpb25hcnlcblxuY2l0aWVzIDwtIGMoXCJQaG9lbml4IGNpdHksIEFyaXpvbmFcIixcbiAgICAgICAgICAgIFwiQXRsYW50YSBjaXR5LCBHZW9yZ2lhXCIsXG4gICAgICAgICAgICBcIkJhbHRpbW9yZSBjaXR5LCBNYXJ5bGFuZFwiLFxuICAgICAgICAgICAgXCJCb3N0b24gY2l0eSwgTWFzc2FjaHVzZXR0c1wiLFxuICAgICAgICAgICAgXCJDaGljYWdvIGNpdHksIElsbGlub2lzXCIsXG4gICAgICAgICAgICBcIkNoaWNhZ28gY2l0eSwgSWxsaW5vaXNcIixcbiAgICAgICAgICAgIFwiQ2luY2lubmF0aSBjaXR5LCBPaGlvXCIsXG4gICAgICAgICAgICBcIkNsZXZlbGFuZCBjaXR5LCBPaGlvXCIsXG4gICAgICAgICAgICBcIkRlbnZlciBjaXR5LCBDb2xvcmFkb1wiLFxuICAgICAgICAgICAgXCJEZXRyb2l0IGNpdHksIE1pY2hpZ2FuXCIsXG4gICAgICAgICAgICBcIkhvdXN0b24gY2l0eSwgVGV4YXNcIixcbiAgICAgICAgICAgIFwiS2Fuc2FzIENpdHkgY2l0eSwgTWlzc291cmlcIixcbiAgICAgICAgICAgIFwiTG9zIEFuZ2VsZXMgY2l0eSwgQ2FsaWZvcm5pYVwiLFxuICAgICAgICAgICAgXCJMb3MgQW5nZWxlcyBjaXR5LCBDYWxpZm9ybmlhXCIsXG4gICAgICAgICAgICBcIk1pYW1pIGNpdHksIEZsb3JpZGFcIixcbiAgICAgICAgICAgICdNaWx3YXVrZWUgY2l0eSwgV2lzY29uc2luJyxcbiAgICAgICAgICAgIFwiTWlubmVhcG9saXMgY2l0eSwgTWlubmVzb3RhXCIsXG4gICAgICAgICAgICBcIk5ldyBZb3JrIGNpdHksIE5ldyBZb3JrXCIsXG4gICAgICAgICAgICBcIk5ldyBZb3JrIGNpdHksIE5ldyBZb3JrXCIsXG4gICAgICAgICAgICBcIk9ha2xhbmQgY2l0eSwgQ2FsaWZvcm5pYVwiLFxuICAgICAgICAgICAgXCJQaGlsYWRlbHBoaWEgY2l0eSwgUGVubnN5bHZhbmlhXCIsXG4gICAgICAgICAgICBcIlBpdHRzYnVyZ2ggY2l0eSwgUGVubnN5bHZhbmlhXCIsXG4gICAgICAgICAgICBcIlNhbiBEaWVnbyBjaXR5LCBDYWxpZm9ybmlhXCIsXG4gICAgICAgICAgICBcIlNhbiBGcmFuY2lzY28gY2l0eSwgQ2FsaWZvcm5pYVwiLFxuICAgICAgICAgICAgXCJTZWF0dGxlIGNpdHksIFdhc2hpbmd0b25cIixcbiAgICAgICAgICAgIFwiU3QuIExvdWlzIGNpdHksIE1pc3NvdXJpXCIsXG4gICAgICAgICAgICBcIlRhbXBhIGNpdHksIEZsb3JpZGFcIixcbiAgICAgICAgICAgIFwiRGFsbGFzIGNpdHksIFRleGFzXCIsXG4gICAgICAgICAgICBcIlRvcm9udG9cIixcbiAgICAgICAgICAgIFwiV2FzaGluZ3RvbiBjaXR5LCBEaXN0cmljdCBvZiBDb2x1bWJpYVwiKVxudGVhbXMgPC0gdGVhbXMgJT4lIFxuICBhcnJhbmdlKHRlYW0pICU+JSBcbiAgbXV0YXRlKGNpdGllcyA9IGNpdGllcylcbmBgYCJ9 -->
-<pre class="r"><code># cities and teams dictionary
-
-cities &lt;- c(&quot;Phoenix city, Arizona&quot;,
-            &quot;Atlanta city, Georgia&quot;,
-            &quot;Baltimore city, Maryland&quot;,
-            &quot;Boston city, Massachusetts&quot;,
-            &quot;Chicago city, Illinois&quot;,
-            &quot;Chicago city, Illinois&quot;,
-            &quot;Cincinnati city, Ohio&quot;,
-            &quot;Cleveland city, Ohio&quot;,
-            &quot;Denver city, Colorado&quot;,
-            &quot;Detroit city, Michigan&quot;,
-            &quot;Houston city, Texas&quot;,
-            &quot;Kansas City city, Missouri&quot;,
-            &quot;Los Angeles city, California&quot;,
-            &quot;Los Angeles city, California&quot;,
-            &quot;Miami city, Florida&quot;,
-            &#39;Milwaukee city, Wisconsin&#39;,
-            &quot;Minneapolis city, Minnesota&quot;,
-            &quot;New York city, New York&quot;,
-            &quot;New York city, New York&quot;,
-            &quot;Oakland city, California&quot;,
-            &quot;Philadelphia city, Pennsylvania&quot;,
-            &quot;Pittsburgh city, Pennsylvania&quot;,
-            &quot;San Diego city, California&quot;,
-            &quot;San Francisco city, California&quot;,
-            &quot;Seattle city, Washington&quot;,
-            &quot;St. Louis city, Missouri&quot;,
-            &quot;Tampa city, Florida&quot;,
-            &quot;Dallas city, Texas&quot;,
-            &quot;Toronto&quot;,
-            &quot;Washington city, District of Columbia&quot;)
-teams &lt;- teams %&gt;% 
-  arrange(team) %&gt;% 
-  mutate(cities = cities)</code></pre>
-<!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 </div>
@@ -1882,106 +1788,10 @@ teams &lt;- teams %&gt;%
 <h1>Population Tables</h1>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBwb3B1bGF0aW9uIHRhYmxlc1xucG9wMjAyMCA8LSByZWFkX2NzdihcImRhdGEvcG9wMjAyMC5jc3ZcIilcbmBgYCJ9 -->
-<pre class="r"><code># population tables
-pop2020 &lt;- read_csv(&quot;data/pop2020.csv&quot;)</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiTmV3IG5hbWVzOlJvd3M6IDgxMiBDb2x1bW5zOiA14pSA4pSAIENvbHVtbiBzcGVjaWZpY2F0aW9uIOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgFxuRGVsaW1pdGVyOiBcIixcIlxuY2hyICgyKTogdGFibGUgd2l0aCByb3cgaGVhZGVycyBpbiBjb2x1bW4gQiBhbmQgY29sdW1uIGhlYWRlcnMgaW4gcm93cyAzIHRocm91Z2ggNCAobGVhZGluZyBkb3RzIGluZGljYXRlIHN1Yi1wYXJ0cyksIC4uLjJcbm51bSAoMyk6IC4uLjMsIC4uLjQsIC4uLjVcbuKEuSBVc2UgYHNwZWMoKWAgdG8gcmV0cmlldmUgdGhlIGZ1bGwgY29sdW1uIHNwZWNpZmljYXRpb24gZm9yIHRoaXMgZGF0YS5cbuKEuSBTcGVjaWZ5IHRoZSBjb2x1bW4gdHlwZXMgb3Igc2V0IGBzaG93X2NvbF90eXBlcyA9IEZBTFNFYCB0byBxdWlldCB0aGlzIG1lc3NhZ2UuXG4ifQ== -->
-<pre><code>New names:Rows: 812 Columns: 5── Column specification ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-Delimiter: &quot;,&quot;
-chr (2): table with row headers in column B and column headers in rows 3 through 4 (leading dots indicate sub-parts), ...2
-num (3): ...3, ...4, ...5
-ℹ Use `spec()` to retrieve the full column specification for this data.
-ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
-<!-- rnb-output-end -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxucG9wMjAxMCA8LSByZWFkX2NzdihcImRhdGEvcG9wMjAxMC5jc3ZcIilcbmBgYCJ9 -->
-<pre class="r"><code>pop2010 &lt;- read_csv(&quot;data/pop2010.csv&quot;)</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiTmV3IG5hbWVzOlJvd3M6IDc5NCBDb2x1bW5zOiAxMuKUgOKUgCBDb2x1bW4gc3BlY2lmaWNhdGlvbiDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIBcbkRlbGltaXRlcjogXCIsXCJcbmNociAgKDIpOiB0YWJsZSB3aXRoIHJvdyBoZWFkZXJzIGluIGNvbHVtbiBCIGFuZCBjb2x1bW4gaGVhZGVycyBpbiByb3dzIDMgdGhyb3VnaCA0LCAuLi4yXG5udW0gKDEwKTogLi4uMywgLi4uNCwgLi4uNSwgLi4uNiwgLi4uNywgLi4uOCwgLi4uOSwgLi4uMTAsIC4uLjExLCAuLi4xMlxu4oS5IFVzZSBgc3BlYygpYCB0byByZXRyaWV2ZSB0aGUgZnVsbCBjb2x1bW4gc3BlY2lmaWNhdGlvbiBmb3IgdGhpcyBkYXRhLlxu4oS5IFNwZWNpZnkgdGhlIGNvbHVtbiB0eXBlcyBvciBzZXQgYHNob3dfY29sX3R5cGVzID0gRkFMU0VgIHRvIHF1aWV0IHRoaXMgbWVzc2FnZS5cbiJ9 -->
-<pre><code>New names:Rows: 794 Columns: 12── Column specification ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-Delimiter: &quot;,&quot;
-chr  (2): table with row headers in column B and column headers in rows 3 through 4, ...2
-num (10): ...3, ...4, ...5, ...6, ...7, ...8, ...9, ...10, ...11, ...12
-ℹ Use `spec()` to retrieve the full column specification for this data.
-ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
-<!-- rnb-output-end -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxucG9wMjAwMCA8LSByZWFkX2NzdihcImRhdGEvcG9wMjAwMC5jc3ZcIilcbmBgYCJ9 -->
-<pre class="r"><code>pop2000 &lt;- read_csv(&quot;data/pop2000.csv&quot;)</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiUm93czogODE2MjUgQ29sdW1uczogMjDilIDilIAgQ29sdW1uIHNwZWNpZmljYXRpb24g4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSAXG5EZWxpbWl0ZXI6IFwiLFwiXG5jaHIgICgyKTogTkFNRSwgU1ROQU1FXG5kYmwgKDE4KTogU1VNTEVWLCBTVEFURSwgQ09VTlRZLCBQTEFDRSwgQ09VU1VCLCBFU1RJTUFURVNCQVNFMjAwMCwgUE9QRVNUSU1BVEUyMDAwLCBQT1BFU1RJTUFURTIwMDEsIFBPUEVTVElNQVRFMjAwMiwgUE9QRVNUSU1BVEUyMDAzLCBQT1BFU1RJTUFURTIuLi5cbuKEuSBVc2UgYHNwZWMoKWAgdG8gcmV0cmlldmUgdGhlIGZ1bGwgY29sdW1uIHNwZWNpZmljYXRpb24gZm9yIHRoaXMgZGF0YS5cbuKEuSBTcGVjaWZ5IHRoZSBjb2x1bW4gdHlwZXMgb3Igc2V0IGBzaG93X2NvbF90eXBlcyA9IEZBTFNFYCB0byBxdWlldCB0aGlzIG1lc3NhZ2UuXG4ifQ== -->
-<pre><code>Rows: 81625 Columns: 20── Column specification ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-Delimiter: &quot;,&quot;
-chr  (2): NAME, STNAME
-dbl (18): SUMLEV, STATE, COUNTY, PLACE, COUSUB, ESTIMATESBASE2000, POPESTIMATE2000, POPESTIMATE2001, POPESTIMATE2002, POPESTIMATE2003, POPESTIMATE2...
-ℹ Use `spec()` to retrieve the full column specification for this data.
-ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
-<!-- rnb-output-end -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxucG9wMjAyMCA8LSBwb3AyMDIwWywtMV1cbmNvbG5hbWVzKHBvcDIwMjApIDwtIHBvcDIwMjBbMSxdXG5wb3AyMDIwIDwtIHBvcDIwMjBbLTEsXVxuXG5wb3AyMDEwIDwtIHBvcDIwMTBbLC0xXVxuY29sbmFtZXMocG9wMjAxMCkgPC0gcG9wMjAxMFsxLF1cbnBvcDIwMTAgPC0gcG9wMjAxMFstMSxdXG5cbnBvcDIwMDAgPC0gcG9wMjAwMCAlPiUgXG4gIGZpbHRlcihQTEFDRSAhPSAwICYgQ09VTlRZID09IDApICU+JSBcbiAgdW5pdGUoQ2l0eSwgTkFNRSwgU1ROQU1FLCBzZXAgPSBcIiwgXCIpICU+JVxuICBhcnJhbmdlKGRlc2MoUE9QRVNUSU1BVEUyMDAwKSlcblxucG9wMjAwMCA8LSBwb3AyMDAwWywtYygxLCAyLCAzLCA0LCA1LCA3LCAxOCwgMTkpXVxuY29sbmFtZXMocG9wMjAwMCkgPC0gYyhcIkNpdHlcIiwgMjAwMCwgMjAwMSwgMjAwMiwgMjAwMywgMjAwNCwgMjAwNSwgMjAwNiwgMjAwNywgMjAwOCwgMjAwOSlcblxucG9wIDwtIHBvcDIwMDAgJT4lIFxuICBpbm5lcl9qb2luKHBvcDIwMTAsIGJ5ID0gXCJDaXR5XCIpICU+JSBcbiAgaW5uZXJfam9pbihwb3AyMDIwLCBieSA9IFwiQ2l0eVwiKVxuXG5cblxucm0ocG9wMjAwMCwgcG9wMjAxMCwgcG9wMjAyMClcblxucG9wIDwtIHBvcCAlPiUgXG4gIGZpbHRlcihDaXR5ICVpbiUgY2l0aWVzKVxuXG5wb3AgPC0gcG9wICU+JSBcbiAgcGl2b3RfbG9uZ2VyKGNvbHMgPSAtQ2l0eSwgbmFtZXNfdG8gPSBcIlllYXJcIiwgdmFsdWVzX3RvID0gXCJQb3B1bGF0aW9uXCIpXG5cbnRvcm9udG8gPC0gcmVhZF9jc3YoXCJkYXRhL3Rvcm9udG8uY3N2XCIpXG5gYGAifQ== -->
-<pre class="r"><code>pop2020 &lt;- pop2020[,-1]
-colnames(pop2020) &lt;- pop2020[1,]
-pop2020 &lt;- pop2020[-1,]
-
-pop2010 &lt;- pop2010[,-1]
-colnames(pop2010) &lt;- pop2010[1,]
-pop2010 &lt;- pop2010[-1,]
-
-pop2000 &lt;- pop2000 %&gt;% 
-  filter(PLACE != 0 &amp; COUNTY == 0) %&gt;% 
-  unite(City, NAME, STNAME, sep = &quot;, &quot;) %&gt;%
-  arrange(desc(POPESTIMATE2000))
-
-pop2000 &lt;- pop2000[,-c(1, 2, 3, 4, 5, 7, 18, 19)]
-colnames(pop2000) &lt;- c(&quot;City&quot;, 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009)
-
-pop &lt;- pop2000 %&gt;% 
-  inner_join(pop2010, by = &quot;City&quot;) %&gt;% 
-  inner_join(pop2020, by = &quot;City&quot;)
-
-
-
-rm(pop2000, pop2010, pop2020)
-
-pop &lt;- pop %&gt;% 
-  filter(City %in% cities)
-
-pop &lt;- pop %&gt;% 
-  pivot_longer(cols = -City, names_to = &quot;Year&quot;, values_to = &quot;Population&quot;)
-
-toronto &lt;- read_csv(&quot;data/toronto.csv&quot;)</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiUm93czogMjQgQ29sdW1uczogM+KUgOKUgCBDb2x1bW4gc3BlY2lmaWNhdGlvbiDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIBcbkRlbGltaXRlcjogXCIsXCJcbmNociAoMSk6IENpdHlcbmRibCAoMSk6IFllYXJcbm51bSAoMSk6IFBvcHVsYXRpb25cbuKEuSBVc2UgYHNwZWMoKWAgdG8gcmV0cmlldmUgdGhlIGZ1bGwgY29sdW1uIHNwZWNpZmljYXRpb24gZm9yIHRoaXMgZGF0YS5cbuKEuSBTcGVjaWZ5IHRoZSBjb2x1bW4gdHlwZXMgb3Igc2V0IGBzaG93X2NvbF90eXBlcyA9IEZBTFNFYCB0byBxdWlldCB0aGlzIG1lc3NhZ2UuXG4ifQ== -->
-<pre><code>Rows: 24 Columns: 3── Column specification ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-Delimiter: &quot;,&quot;
-chr (1): City
-dbl (1): Year
-num (1): Population
-ℹ Use `spec()` to retrieve the full column specification for this data.
-ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
-<!-- rnb-output-end -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxucG9wIDwtIHJiaW5kKHBvcCwgdG9yb250bykgJT4lIFxuICBhcnJhbmdlKENpdHkpXG5cbnBvcCA8LSBwb3AgJT4lIFxuICBtdXRhdGUoWWVhciA9IGFzLm51bWVyaWMoWWVhcikpXG5cbnJtKHRvcm9udG8pXG5cbiMgZnJvbSB1cyBjZW5zdXMgYnVyZWF1XG4jIHRvcm9udG8gcG9wdWxhdGlvbiBmcm9tIGh0dHBzOi8vcG9wdWxhdGlvbi51bi5vcmcvd3BwL1xuYGBgIn0= -->
-<pre class="r"><code>pop &lt;- rbind(pop, toronto) %&gt;% 
-  arrange(City)
-
-pop &lt;- pop %&gt;% 
-  mutate(Year = as.numeric(Year))
-
-rm(toronto)
-
-# from us census bureau
-# toronto population from https://population.un.org/wpp/</code></pre>
-<!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBmaWx0ZXIgb3V0IGJlZm9yZSAyMDAzIChzdGFydCBvZiBjdXJyZW50IENCVCBzeXN0ZW0pXG5wb3AgPC0gcG9wICU+JSBcbiAgZmlsdGVyKFllYXIgPiAyMDAyKVxuXG5wYXlyb2xsIDwtIHBheXJvbGwgJT4lIFxuICBmaWx0ZXIoeWVhciA+IDIwMDIpXG5gYGAifQ== -->
-<pre class="r"><code># filter out before 2003 (start of current CBT system)
-pop &lt;- pop %&gt;% 
-  filter(Year &gt; 2002)
-
-payroll &lt;- payroll %&gt;% 
-  filter(year &gt; 2002)</code></pre>
-<!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 </div>
@@ -1989,44 +1799,12 @@ payroll &lt;- payroll %&gt;%
 <h1>CBT</h1>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxueWVhciA8LSBzZXEoMjAwMywgMjAyMiwgYnkgPSAxKVxuY2J0IDwtIGMoMTE3MDAwMDAwLFxuICAgICAgICAgMTIwNTAwMDAwLFxuICAgICAgICAgMTI4MDAwMDAwLFxuICAgICAgICAgMTM2NTAwMDAwLFxuICAgICAgICAgMTQ4MDAwMDAwLFxuICAgICAgICAgMTU1MDAwMDAwLFxuICAgICAgICAgMTYyMDAwMDAwLFxuICAgICAgICAgMTcwMDAwMDAwLFxuICAgICAgICAgMTc4MDAwMDAwLFxuICAgICAgICAgMTc4MDAwMDAwLFxuICAgICAgICAgMTc4MDAwMDAwLFxuICAgICAgICAgMTg5MDAwMDAwLFxuICAgICAgICAgMTg5MDAwMDAwLFxuICAgICAgICAgMTg5MDAwMDAwLFxuICAgICAgICAgMTk1MDAwMDAwLFxuICAgICAgICAgMTk3MDAwMDAwLFxuICAgICAgICAgMjA2MDAwMDAwLFxuICAgICAgICAgMjA4MDAwMDAwLFxuICAgICAgICAgMjEwMDAwMDAwLFxuICAgICAgICAgMjMwMDAwMDAwKVxuXG5jYnQgPC0gZGF0YS5mcmFtZSh5ZWFyLCBjYnQpXG5cbmBgYCJ9 -->
-<pre class="r"><code>year &lt;- seq(2003, 2022, by = 1)
-cbt &lt;- c(117000000,
-         120500000,
-         128000000,
-         136500000,
-         148000000,
-         155000000,
-         162000000,
-         170000000,
-         178000000,
-         178000000,
-         178000000,
-         189000000,
-         189000000,
-         189000000,
-         195000000,
-         197000000,
-         206000000,
-         208000000,
-         210000000,
-         230000000)
-
-cbt &lt;- data.frame(year, cbt)
-</code></pre>
-<!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <div id="add-to-payroll-table" class="section level2">
 <h2>Add to Payroll Table</h2>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxucGF5cm9sbCA8LSBsZWZ0X2pvaW4ocGF5cm9sbCwgY2J0LCBieSA9IFwieWVhclwiKVxuXG5wYXlyb2xsIDwtIHBheXJvbGwgJT4lIFxuICBtdXRhdGUoYWJvdmVfY2J0ID0gaWZfZWxzZShwYXlyb2xsID4gY2J0LCAxLCAwKSlcbmBgYCJ9 -->
-<pre class="r"><code>payroll &lt;- left_join(payroll, cbt, by = &quot;year&quot;)
-
-payroll &lt;- payroll %&gt;% 
-  mutate(above_cbt = if_else(payroll &gt; cbt, 1, 0))</code></pre>
-<!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 </div>
@@ -2035,43 +1813,6 @@ payroll &lt;- payroll %&gt;%
 <h1>Division Tables</h1>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYWxfZWFzdCA8LSBmaWx0ZXIocGF5cm9sbCwgdGVhbSAlaW4lIGMoXCJCYWx0aW1vcmUgT3Jpb2xlc1wiLFxuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgXCJCb3N0b24gUmVkIFNveFwiLFxuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgXCJOZXcgWW9yayBZYW5rZWVzXCIsXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBcIlRhbXBhIEJheSBSYXlzXCIsXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBcIlRvcm9udG8gQmx1ZSBKYXlzXCIpKVxuXG5hbF9jZW50cmFsIDwtIGZpbHRlcihwYXlyb2xsLCB0ZWFtICVpbiUgYyhcIkNoaWNhZ28gV2hpdGUgU294XCIsXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBcIkNsZXZlbGFuZCBHdWFyZGlhbnNcIixcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIFwiRGV0cm9pdCBUaWdlcnNcIixcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIFwiS2Fuc2FzIENpdHkgUm95YWxzXCIsXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBcIk1pbm5lc290YSBUd2luc1wiKSlcblxuYWxfd2VzdCA8LSBmaWx0ZXIocGF5cm9sbCwgdGVhbSAlaW4lIGMoXCJIb3VzdG9uIEFzdHJvc1wiLFxuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgXCJMb3MgQW5nZWxlcyBBbmdlbHNcIixcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIFwiT2FrbGFuZCBBdGhsZXRpY3NcIixcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIFwiU2VhdHRsZSBNYXJpbmVyc1wiLFxuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgXCJUZXhhcyBSYW5nZXJzXCIpKVxuXG5ubF9lYXN0IDwtIGZpbHRlcihwYXlyb2xsLCB0ZWFtICVpbiUgYyhcIkF0bGFudGEgQnJhdmVzXCIsXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBcIk1pYW1pIE1hcmxpbnNcIixcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIFwiTmV3IFlvcmsgTWV0c1wiLFxuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgXCJQaGlsYWRlbHBoaWEgUGhpbGxpZXNcIixcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIFwiV2FzaGluZ3RvbiBOYXRpb25hbHNcIikpXG5cbm5sX2NlbnRyYWwgPC0gZmlsdGVyKHBheXJvbGwsIHRlYW0gJWluJSBjKFwiQ2hpY2FnbyBDdWJzXCIsXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBcIkNpbmNpbm5hdGkgUmVkc1wiLFxuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgXCJNaWx3YXVrZWUgQnJld2Vyc1wiLFxuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgXCJQaXR0c2J1cmdoIFBpcmF0ZXNcIixcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIFwiU3QuIExvdWlzIENhcmRpbmFsc1wiKSlcblxubmxfd2VzdCA8LSBmaWx0ZXIocGF5cm9sbCwgdGVhbSAlaW4lIGMoXCJBcml6b25hIERpYW1vbmRiYWNrc1wiLFxuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgXCJDb2xvcmFkbyBSb2NraWVzXCIsXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBcIkxvcyBBbmdlbGVzIERvZGdlcnNcIixcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIFwiU2FuIERpZWdvIFBhZHJlc1wiLFxuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgXCJTYW4gRnJhbmNpc2NvIEdpYW50c1wiKSlcbmBgYCJ9 -->
-<pre class="r"><code>al_east &lt;- filter(payroll, team %in% c(&quot;Baltimore Orioles&quot;,
-                                       &quot;Boston Red Sox&quot;,
-                                       &quot;New York Yankees&quot;,
-                                       &quot;Tampa Bay Rays&quot;,
-                                       &quot;Toronto Blue Jays&quot;))
-
-al_central &lt;- filter(payroll, team %in% c(&quot;Chicago White Sox&quot;,
-                                       &quot;Cleveland Guardians&quot;,
-                                       &quot;Detroit Tigers&quot;,
-                                       &quot;Kansas City Royals&quot;,
-                                       &quot;Minnesota Twins&quot;))
-
-al_west &lt;- filter(payroll, team %in% c(&quot;Houston Astros&quot;,
-                                       &quot;Los Angeles Angels&quot;,
-                                       &quot;Oakland Athletics&quot;,
-                                       &quot;Seattle Mariners&quot;,
-                                       &quot;Texas Rangers&quot;))
-
-nl_east &lt;- filter(payroll, team %in% c(&quot;Atlanta Braves&quot;,
-                                       &quot;Miami Marlins&quot;,
-                                       &quot;New York Mets&quot;,
-                                       &quot;Philadelphia Phillies&quot;,
-                                       &quot;Washington Nationals&quot;))
-
-nl_central &lt;- filter(payroll, team %in% c(&quot;Chicago Cubs&quot;,
-                                       &quot;Cincinnati Reds&quot;,
-                                       &quot;Milwaukee Brewers&quot;,
-                                       &quot;Pittsburgh Pirates&quot;,
-                                       &quot;St. Louis Cardinals&quot;))
-
-nl_west &lt;- filter(payroll, team %in% c(&quot;Arizona Diamondbacks&quot;,
-                                       &quot;Colorado Rockies&quot;,
-                                       &quot;Los Angeles Dodgers&quot;,
-                                       &quot;San Diego Padres&quot;,
-                                       &quot;San Francisco Giants&quot;))</code></pre>
-<!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 </div>
 

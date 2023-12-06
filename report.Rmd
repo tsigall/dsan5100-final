@@ -1,10 +1,12 @@
 ---
-title: "Moneyball vs. Millionaires: Examining the Need for a Salary Cap in Major League Baseball"
+title: 'Moneyball vs. Millionaires: Examining the Need for a Salary Cap in Major League
+  Baseball'
 author: "Thomas Sigall"
 date: "`r Sys.Date()`"
-output: html_document
-editor_options: 
-  chunk_output_type: inline
+output:
+  html_document:
+    toc: yes
+    df_print: paged
 bibliography: bibliography.bib
 ---
 
@@ -20,7 +22,7 @@ load("data.Rdata")
 
 # Introduction
 
-## The 2002 Oakland Athletics
+### The 2002 Oakland Athletics
 
 The legendary 2011 film "Moneyball" tells the story of the 2002 Oakland Athletics, a team taken over by general manager Billy Beane who led them to a historic season, winning 103 games, winning their division, and making the playoffs. The reason that season was immortalized into a movie, however, was not simply because the team had a historically good season. The 2002 Oakland Athletics did something far more remarkable. They were not just able to win, but they did it as a small market team, with an incredibly low payroll, the third lowest in the league in 2002 [@payroll].
 
@@ -28,31 +30,24 @@ The Athletics had seen periods of success in their franchise's history, but stru
 
 The 2002 Oakland Athletics are a remarkable team because they were able to innovate and find value in players that did not cost nearly as much as the superstars New York and Boston were paying for. This was 20 years ago though, and now all teams use similar methods that were pioneered in that 2002 season. There is little value left to find out there on the smaller payrolls that these smaller market teams are given. This project is not about attempting to replicate what the 2002 Athletics were able to do. Instead, we will look at the system that forced them and all other small market teams to do more with less just to compete with large market teams. We will investigate the relationship between payroll and team success.
 
-## The Competitive Balance Tax
+### The Competitive Balance Tax
 
 To help decrease the gap between teams with deep pockets and teams without, most sports leagues in the United States have what is called a salary cap. This is as it sounds, an agreed upon limit on the amount teams can spend on player salaries. For example, the National Football league set its salary cap at \$224,800,000 for the 2023 season [@nfl_salary]. Teams are not permitted to spend more than that amount on their players and spend a lot of time trying to maneuver contracts to stay under that figure. Player salaries are by far the largest expense any team has and this hard limit on that expense helps to balance the playing field and close the gap between large market and small market teams.
 
-The MLB, however, does not have a salary cap. There is no limit on the amount of money teams can spend on player salaries. Instead, they have implemented a system called the "Competitive Balance Tax"(CBT) [@fangraphs]. An amount is agreed upon by the league, the CBT threshold, though teams are allowed to exceed this amount in their payroll. If they do exceed this amount, they are taxed at a rate proportional to the number of years they have been over this amount. This system has been in place since 2002 and the values for the CBT threshold over the years are as follows (in millions of dollars):
+The MLB, however, does not have a salary cap. There is no limit on the amount of money teams can spend on player salaries. Instead, they have implemented a system called the "Competitive Balance Tax" (CBT) [@fangraphs]. An amount is agreed upon by the league, the CBT threshold, though teams are allowed to exceed this amount in their payroll. If they do exceed this amount, they are taxed at a rate proportional to the number of years they have been over this amount. This system has been in place since 2002 and the values for the CBT threshold over the years are as follows (in millions of dollars):
 
-```{r}
+```{r fig.show="hold"}
 cbt$cbt <- scales::dollar(cbt$cbt / 1e6)
 t1 <- cbt[1:5,]
 t2 <- cbt[6:10,]
 t3 <- cbt[11:15,]
 t4 <- cbt[16:20,]
 
-kable(t1) %>%
-  kable_styling(full_width = FALSE, position = "float_left")
-kable(t2, row.names = FALSE) %>%
-  kable_styling(full_width = FALSE, position = "float_left") 
-kable(t3, row.names = FALSE) %>%
-  kable_styling(full_width = FALSE, position = "float_left") 
-kable(t4, row.names = FALSE) %>%
-  kable_styling(full_width = FALSE, position = "left")
-
+kable(cbind(t1, t2, t3, t4)) %>% 
+  kable_styling(full_width = TRUE)
 ```
 
-Naturally, this value usually increase each year to keep up with various factors, such as inflation, increasing league revenues, and others. It is a fairly high value, as most teams have never passed this threshold in the 20 years of its existence. Enough teams do pass it, though, that it gives a good baseline to determine which teams are large market teams that spend big and which teams are not.
+Naturally, this value usually increases each year to keep up with various factors, such as inflation, increasing league revenues, and others. It is a fairly high value, as most teams have never passed this threshold in the 20 years of its existence. Enough teams do pass it, though, that it gives a good baseline to determine which teams are large market teams that spend big and which teams are not.
 
 The theory behind this threshold is that it should punish wealthier teams for spending large amounts of money that smaller teams do not have. This should level the playing field and allow teams to spend similar amounts of money and encourage on-field competition as the way to determine the best team, rather than the league being a competition decided on who has the deepest pockets.
 
@@ -78,7 +73,7 @@ There is some concern that a salary cap would do little to address the real issu
 
 Data was gathered from many sources. First payroll data was obtained from Retrosheet [@payroll] and formatted into a single table to be used for exploratory data analysis. This table includes team, season, payroll (in millions of dollars), winning percentage, if the team made the playoffs, and if the team is above the CBT. Playoff data is from Baseball Reference [@playoffs].
 
-```{r}
+```{r fig.pos='H'}
 payroll$payroll <- scales::dollar(payroll$payroll / 1e6)
 
 kable(head(payroll[,c(1, 4, 2, 3, 6, 8)])) %>% 
@@ -87,22 +82,12 @@ kable(head(payroll[,c(1, 4, 2, 3, 6, 8)])) %>%
 
 In addition, population data was needed to address the concerns about population being a better predictor than payroll as explained earlier. Population data was obtained from the US Census Bureau [@census] and from the UN for Toronto's population [@toronto].
 
-```{r}
+```{r fig.pos='H'}
 kable(head(pop)) %>% 
   kable_styling(full_width = FALSE)
 ```
 
-The main population center was determined for each team and can be seen below. Note that some population centers have multiple teams.
-
-```{r}
-t1 <- teams[1:15,]
-t2 <- teams[16:30,]
-
-kable(t1) %>%
-  kable_styling(full_width = FALSE, position = "float_left")
-kable(t2, row.names = FALSE) %>%
-  kable_styling(full_width = FALSE, position = "left") 
-```
+The main population center was determined for each team and can be seen in the appendix. Note that some population centers have multiple teams.
 
 ## Exploratory Data Analysis
 
@@ -110,6 +95,13 @@ The first thing looked at was how each team's payroll changes over time. There a
 
 ```{r}
 p1
+```
+
+# Appendix
+
+```{r}
+kable(teams) %>%
+  kable_styling(full_width = FALSE)
 ```
 
 # References
